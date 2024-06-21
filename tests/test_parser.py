@@ -962,3 +962,41 @@ def test_parsererror_repr():
     s = repr(ParserError("Problem with string: %s", "2019-01-01"))
 
     assert s == "ParserError('Problem with string: %s', '2019-01-01')"
+
+# Define a mock parserinfo
+class MockParserInfo(parserinfo):
+    def hms(self, s):
+        return int(s[:-1])  # Simple mock implementation
+
+# Directly test the _parse_hms method
+def test_parse_hms_with_none():
+    info = MockParserInfo()
+    p = parser()  # Instantiate parser without parserinfo
+
+    tokens = ['10h', '36m', '28s']
+    idx = 0
+    hms_idx = None  # Explicitly set to None to test this branch
+
+    # Access the _parse_hms method and call it
+    new_idx, hms = p._parse_hms(idx, tokens, info, hms_idx)
+
+    assert new_idx == idx
+    assert hms is None
+
+def test_parse_hms_with_hms_idx_backward():
+    info = MockParserInfo()
+    p = parser()  # Instantiate parser without parserinfo
+
+    tokens = ['10h', '36m', '28s']
+    idx = 2
+    hms_idx = 1
+
+    # Access the _parse_hms method and call it
+    new_idx, hms = p._parse_hms(idx, tokens, info, hms_idx)
+
+    assert new_idx == idx
+    assert hms == 37  # 36 + 1 as per the code logic
+
+# Ensure pytest picks up these tests
+if __name__ == "__main__":
+    pytest.main()
