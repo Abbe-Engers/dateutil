@@ -11,6 +11,7 @@ from dateutil.tz import tzoffset
 from dateutil.parser import parse, parserinfo
 from dateutil.parser import ParserError
 from dateutil.parser import UnknownTimezoneWarning
+from dateutil.parser import parserinfo, parser
 
 from ._common import TZEnvContext
 
