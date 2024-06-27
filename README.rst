@@ -1,7 +1,7 @@
 # Report for Assignment 1
 
 ## Installation
-
+## Screenshots of coverage measurements: https://github.com/Abbe-Engers/dateutil/tree/master/screenshots_branch_coverage
 To install the package for coverage measurement, run the following command:
 
 ```bash
@@ -47,11 +47,8 @@ Yasar Kocdas
 Function 1: parser._parse() in dateutil/parser/_parser_hms, from 78% -> 100%
 Function 2: rrulebase.__contains__() in dateutil/rrule.py, from 78% -> 100%
 
-PER FUNCTIE NIEUWE SS, before & eind
-
 ### Overall
 
-ZAKA SCREENSHOT
 <Provide a screenshot of the old coverage results by running an existing tool (the same as you already showed above)>
 
 <Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
