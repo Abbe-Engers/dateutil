@@ -286,6 +286,12 @@ class tzrangebase(_tzinfo):
 
     .. versionadded:: 2.6.0
     """
+
+    branch_coverage = {
+        "function__dst_base_offset": False,
+        "function___repr__": False,
+    }
+
     def __init__(self):
         raise NotImplementedError('tzrangebase is an abstract base class')
 
@@ -406,6 +412,8 @@ class tzrangebase(_tzinfo):
 
     @property
     def _dst_base_offset(self):
+        self.branch_coverage["function__dst_base_offset"] = True
+
         return self._dst_offset - self._std_offset
 
     __hash__ = None
@@ -414,6 +422,8 @@ class tzrangebase(_tzinfo):
         return not (self == other)
 
     def __repr__(self):
+        self.branch_coverage["function___repr__"] = True
+
         return "%s(...)" % self.__class__.__name__
 
     __reduce__ = object.__reduce__
