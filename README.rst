@@ -44,6 +44,11 @@ Abbe Engers:
 Function 1: tzrangebase._dst_base_offset() in dateutil/tz/_common.py, from 0% -> 100%
 Function 2: tzrangebase.__repr__() in dateutil/tz/_common.py, from 0% -> 100%
 
+Yasar Kocdas
+Function 1: parser._parse() in dateutil/parser/_parser_hms, from 78% -> 100%
+Function 2: rrulebase.__contains__() in dateutil/rrule.py, from 78% -> 100%
+
+
 <Function 1 name>
 
 <Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
