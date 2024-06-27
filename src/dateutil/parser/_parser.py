@@ -566,6 +566,12 @@ class _ymd(list):
 
 
 class parser(object):
+    branch_coverage_parse_hms = {
+        "parse_hms_if_none": False,
+        "parse_hms_elif_greater": False,
+        "parse_hms_else": False
+    }
+
     def __init__(self, info=None):
         self.info = info or parserinfo()
 
@@ -632,6 +638,8 @@ class parser(object):
             Raised if the parsed date exceeds the largest valid C integer on
             your system.
         """
+
+
 
         if default is None:
             default = datetime.datetime.now().replace(hour=0, minute=0,
@@ -1114,17 +1122,19 @@ class parser(object):
         # text?  I guess hex hashes won't have that problem, but there's plenty
         # of random junk out there.
         if hms_idx is None:
+            self.branch_coverage_parse_hms["parse_hms_if_none"] = True
             hms = None
             new_idx = idx
         elif hms_idx > idx:
+            self.branch_coverage_parse_hms["parse_hms_elif_greater"] = True
             hms = info.hms(tokens[hms_idx])
             new_idx = hms_idx
         else:
+            self.branch_coverage_parse_hms["parse_hms_else"] = True
             # Looking backwards, increment one.
             hms = info.hms(tokens[hms_idx]) + 1
             new_idx = idx
-
-        return (new_idx, hms)
+        return new_idx, hms
 
     # ------------------------------------------------------------------
     # Handling for individual tokens.  These are kept as methods instead

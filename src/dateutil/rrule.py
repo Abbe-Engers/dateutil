@@ -169,16 +169,19 @@ class rrulebase(object):
             return list(iter(self))[item]
 
     def __contains__(self, item):
-        if self._cache_complete:
+         if self._cache_complete:
+            self.branch_coverage["contains_if_cache_complete"] = True
             return item in self._cache
-        else:
-            for i in self:
+         else:
+            self.branch_coverage["contains_for_loop"] = True
+            for i in self._cache:
                 if i == item:
+                    self.branch_coverage["contains_if_item_equals"] = True
                     return True
                 elif i > item:
+                    self.branch_coverage["contains_elif_item_greater"] = True
                     return False
-        return False
-
+         return False
     # __len__() introduces a large performance penalty.
     def count(self):
         """ Returns the number of recurrences in this set. It will have go

@@ -1,22 +1,5 @@
 from __future__ import unicode_literals
-
-import itertools
-from datetime import datetime, timedelta
-import unittest
-import sys
-
-from dateutil import tz
-from dateutil.tz import tzoffset
-from dateutil.parser import parse, parserinfo
-from dateutil.parser import ParserError
-from dateutil.parser import UnknownTimezoneWarning
 from dateutil.parser import parserinfo, parser
-
-from ._common import TZEnvContext
-
-from six import assertRaisesRegex, PY2
-from io import StringIO
-
 import pytest
 
 # Define a mock parserinfo
