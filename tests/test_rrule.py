@@ -2505,10 +2505,22 @@ class RRuleTest(unittest.TestCase):
     def testContains(self):
         rr = rrule(DAILY, count=3, dtstart=datetime(1997, 9, 2, 9, 0))
         self.assertEqual(datetime(1997, 9, 3, 9, 0) in rr, True)
-
-    def testContainsNot(self):
+    
+    def testDoesNotContain(self):
         rr = rrule(DAILY, count=3, dtstart=datetime(1997, 9, 2, 9, 0))
-        self.assertEqual(datetime(1997, 9, 3, 9, 0) not in rr, False)
+        self.assertEqual(datetime(1997, 9, 5, 9, 0) in rr, False)
+
+    def testContainsBeforeStart(self):
+        rr = rrule(DAILY, count=3, dtstart=datetime(1997, 9, 2, 9, 0))
+        self.assertEqual(datetime(1997, 9, 1, 9, 0) in rr, False)
+
+    def testContainsExactStart(self):
+        rr = rrule(DAILY, count=3, dtstart=datetime(1997, 9, 2, 9, 0))
+        self.assertEqual(datetime(1997, 9, 2, 9, 0) in rr, True)
+
+    def testContainsBetweenDates(self):
+        rr = rrule(DAILY, count=3, dtstart=datetime(1997, 9, 2, 9, 0))
+        self.assertEqual(datetime(1997, 9, 2, 12, 0) in rr, False)
 
     def testBefore(self):
         self.assertEqual(rrule(DAILY,  # count=5

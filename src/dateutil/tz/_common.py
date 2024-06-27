@@ -290,9 +290,12 @@ class tzrangebase(_tzinfo):
     branch_coverage = {
         "function__dst_base_offset": False,
         "function___repr__": False,
+        "function_dst_none": False,
+        "function_init_not_implemented": False,
     }
 
     def __init__(self):
+        self.branch_coverage["function_init_not_implemented"] = True
         raise NotImplementedError('tzrangebase is an abstract base class')
 
     def utcoffset(self, dt):
@@ -309,6 +312,7 @@ class tzrangebase(_tzinfo):
         isdst = self._isdst(dt)
 
         if isdst is None:
+            self.branch_coverage["function_dst_none"] = True
             return None
         elif isdst:
             return self._dst_base_offset
