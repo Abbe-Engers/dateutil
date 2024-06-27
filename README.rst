@@ -1,7 +1,10 @@
 # Report for Assignment 1
 
 ## Installation
+
 ## Screenshots of coverage measurements: https://github.com/Abbe-Engers/dateutil/tree/master/screenshots_branch_coverage
+
+
 To install the package for coverage measurement, run the following command:
 
 ```bash
@@ -51,6 +54,8 @@ Function 2: rrulebase.__contains__() in dateutil/rrule.py, from 78% -> 100%
 
 <Provide a screenshot of the old coverage results by running an existing tool (the same as you already showed above)>
 
+https://github.com/Abbe-Engers/dateutil/tree/master/screenshots_branch_coverage
+   overall coverage before and after can be found via this link
 <Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
 
 ## Statement of individual contributions
