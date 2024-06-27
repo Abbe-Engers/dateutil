@@ -1,168 +1,89 @@
-dateutil - powerful extensions to datetime
-==========================================
+# Report for Assignment 1
 
-|pypi| |support| |licence|
+## Installation
 
-|gitter| |readthedocs|
+To install the package for coverage measurement, run the following command:
 
-|travis| |appveyor| |pipelines| |coverage|
+```bash
+pip install python-dateutil
+```
 
-.. |pypi| image:: https://img.shields.io/pypi/v/python-dateutil.svg?style=flat-square
-    :target: https://pypi.org/project/python-dateutil/
-    :alt: pypi version
+To install our own version of the package with our own coverage tool, run the following command in the root directory of the repository:
 
-.. |support| image:: https://img.shields.io/pypi/pyversions/python-dateutil.svg?style=flat-square
-    :target: https://pypi.org/project/python-dateutil/
-    :alt: supported Python version
+```bash
+pip install -e .
+```
 
-.. |travis| image:: https://img.shields.io/travis/dateutil/dateutil/master.svg?style=flat-square&label=Travis%20Build
-    :target: https://travis-ci.org/dateutil/dateutil
-    :alt: travis build status
+## Project chosen
 
-.. |appveyor| image:: https://img.shields.io/appveyor/ci/dateutil/dateutil/master.svg?style=flat-square&logo=appveyor
-    :target: https://ci.appveyor.com/project/dateutil/dateutil
-    :alt: appveyor build status
+Name: dateutil
 
-.. |pipelines| image:: https://dev.azure.com/pythondateutilazure/dateutil/_apis/build/status/dateutil.dateutil?branchName=master
-    :target: https://dev.azure.com/pythondateutilazure/dateutil/_build/latest?definitionId=1&branchName=master
-    :alt: azure pipelines build status
+URL: https://github.com/dateutil/dateutil
 
-.. |coverage| image:: https://codecov.io/gh/dateutil/dateutil/branch/master/graphs/badge.svg?branch=master
-    :target: https://codecov.io/gh/dateutil/dateutil?branch=master
-    :alt: Code coverage
+Number of lines of code and the tool used to count it: 13.6 KLOC, counted using Lizard
 
-.. |gitter| image:: https://badges.gitter.im/dateutil/dateutil.svg
-   :alt: Join the chat at https://gitter.im/dateutil/dateutil
-   :target: https://gitter.im/dateutil/dateutil
+Programming language: Python
 
-.. |licence| image:: https://img.shields.io/pypi/l/python-dateutil.svg?style=flat-square
-    :target: https://pypi.org/project/python-dateutil/
-    :alt: licence
+## Coverage measurement
 
-.. |readthedocs| image:: https://img.shields.io/readthedocs/dateutil/latest.svg?style=flat-square&label=Read%20the%20Docs
-   :alt: Read the documentation at https://dateutil.readthedocs.io/en/latest/
-   :target: https://dateutil.readthedocs.io/en/latest/
+### Existing tool
 
-The `dateutil` module provides powerful extensions to
-the standard `datetime` module, available in Python.
+We use the coverage.py library to measure the branch coverage, using the following command:
+coverage run -m --branch pytest
 
-Installation
-============
-`dateutil` can be installed from PyPI using `pip` (note that the package name is
-different from the importable name)::
+<Show the coverage results provided by the existing tool with a screenshot>
 
-    pip install python-dateutil
+### Your own coverage tool
 
-Download
-========
-dateutil is available on PyPI
-https://pypi.org/project/python-dateutil/
+<The following is supposed to be repeated for each group member>
 
-The documentation is hosted at:
-https://dateutil.readthedocs.io/en/stable/
+Zakaria Hader
+ParserError._str_()
 
-Code
-====
-The code and issue tracker are hosted on GitHub:
-https://github.com/dateutil/dateutil/
+    ttinfo.__repr_()
 
-Features
-========
+<Group member name>
 
-* Computing of relative deltas (next month, next year,
-  next Monday, last week of month, etc);
-* Computing of relative deltas between two given
-  date and/or datetime objects;
-* Computing of dates based on very flexible recurrence rules,
-  using a superset of the `iCalendar <https://www.ietf.org/rfc/rfc2445.txt>`_
-  specification. Parsing of RFC strings is supported as well.
-* Generic parsing of dates in almost any string format;
-* Timezone (tzinfo) implementations for tzfile(5) format
-  files (/etc/localtime, /usr/share/zoneinfo, etc), TZ
-  environment string (in all known formats), iCalendar
-  format files, given ranges (with help from relative deltas),
-  local machine timezone, fixed offset timezone, UTC timezone,
-  and Windows registry-based time zones.
-* Internal up-to-date world timezone information based on
-  Olson's database.
-* Computing of Easter Sunday dates for any given year,
-  using Western, Orthodox or Julian algorithms;
-* A comprehensive test suite.
+<Function 1 name>
 
-Quick example
-=============
-Here's a snapshot, just to give an idea about the power of the
-package. For more examples, look at the documentation.
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
 
-Suppose you want to know how much time is left, in
-years/months/days/etc, before the next easter happening on a
-year with a Friday 13th in August, and you want to get today's
-date out of the "date" unix system command. Here is the code:
+<Provide a screenshot of the coverage results output by the instrumentation>
 
-.. doctest:: readmeexample
+<Function 2 name>
 
-    >>> from dateutil.relativedelta import *
-    >>> from dateutil.easter import *
-    >>> from dateutil.rrule import *
-    >>> from dateutil.parser import *
-    >>> from datetime import *
-    >>> now = parse("Sat Oct 11 17:13:46 UTC 2003")
-    >>> today = now.date()
-    >>> year = rrule(YEARLY,dtstart=now,bymonth=8,bymonthday=13,byweekday=FR)[0].year
-    >>> rdelta = relativedelta(easter(year), today)
-    >>> print("Today is: %s" % today)
-    Today is: 2003-10-11
-    >>> print("Year with next Aug 13th on a Friday is: %s" % year)
-    Year with next Aug 13th on a Friday is: 2004
-    >>> print("How far is the Easter of that year: %s" % rdelta)
-    How far is the Easter of that year: relativedelta(months=+6)
-    >>> print("And the Easter of that year is: %s" % (today+rdelta))
-    And the Easter of that year is: 2004-04-11
+<Provide the same kind of information provided for Function 1>
 
-Being exactly 6 months ahead was **really** a coincidence :)
+## Coverage improvement
 
-Contributing
-============
+### Individual tests
 
-We welcome many types of contributions - bug reports, pull requests (code, infrastructure or documentation fixes). For more information about how to contribute to the project, see the ``CONTRIBUTING.md`` file in the repository.
+<The following is supposed to be repeated for each group member>
 
+Zakaria Hader
 
-Author
-======
-The dateutil module was written by Gustavo Niemeyer <gustavo@niemeyer.net>
-in 2003.
+<Group member name>
 
-It is maintained by:
+<Test 1>
 
-* Gustavo Niemeyer <gustavo@niemeyer.net> 2003-2011
-* Tomi Pieviläinen <tomi.pievilainen@iki.fi> 2012-2014
-* Yaron de Leeuw <me@jarondl.net> 2014-2016
-* Paul Ganssle <paul@ganssle.io> 2015-
+<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
 
-Starting with version 2.4.1 and running until 2.8.2, all source and binary
-distributions will be signed by a PGP key that has, at the very least, been
-signed by the key which made the previous release. A table of release signing
-keys can be found below:
+<Provide a screenshot of the old coverage results (the same as you already showed above)>
 
-===========  ============================
-Releases     Signing key fingerprint
-===========  ============================
-2.4.1-2.8.2  `6B49 ACBA DCF6 BD1C A206 67AB CD54 FCE3 D964 BEFB`_
-===========  ============================
+<Provide a screenshot of the new coverage results>
 
-New releases *may* have signed tags, but binary and source distributions
-uploaded to PyPI will no longer have GPG signatures attached.
+<State the coverage improvement with a number and elaborate on why the coverage is improved>
 
-Contact
-=======
-Our mailing list is available at `dateutil@python.org <https://mail.python.org/mailman/listinfo/dateutil>`_. As it is hosted by the PSF, it is subject to the `PSF code of
-conduct <https://www.python.org/psf/conduct/>`_.
+<Test 2>
 
-License
-=======
+<Provide the same kind of information provided for Test 1>
 
-All contributions after December 1, 2017 released under dual license - either `Apache 2.0 License <https://www.apache.org/licenses/LICENSE-2.0>`_ or the `BSD 3-Clause License <https://opensource.org/licenses/BSD-3-Clause>`_. Contributions before December 1, 2017 - except those those explicitly relicensed - are released only under the BSD 3-Clause License.
+### Overall
 
+<Provide a screenshot of the old coverage results by running an existing tool (the same as you already showed above)>
 
-.. _6B49 ACBA DCF6 BD1C A206 67AB CD54 FCE3 D964 BEFB:
-   https://pgp.mit.edu/pks/lookup?op=vindex&search=0xCD54FCE3D964BEFB
+<Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
+
+## Statement of individual contributions
+
+<Write what each group member did>
