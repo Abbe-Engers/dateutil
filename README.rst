@@ -31,18 +31,18 @@ Programming language: Python
 We use the coverage.py library to measure the branch coverage, using the following command:
 coverage run -m --branch pytest
 
-<Show the coverage results provided by the existing tool with a screenshot>
-
-### Your own coverage tool
-
-<The following is supposed to be repeated for each group member>
 
 Zakaria Hader
-ParserError._str_()
+Function 1: ParserError._str_() in dateutil/parser/_parser.py, from 50% -> 100%
+Function 2: ttinfo.__repr_() in ParserError.__str__, from 0% -> 100%
 
-    ttinfo.__repr_()
+Amine el Alami
+Function 1: tzrangebase.dst() in dateutil/tz/_common.py, from 80% -> 100%
+Function 2: tzrangebase.__init__() in dateutil/tz/_common.py, from 0% -> 100%
 
-<Group member name>
+Abbe Engers:
+Function 1: tzrangebase._dst_base_offset() in dateutil/tz/_common.py, from 0% -> 100%
+Function 2: tzrangebase.__repr__() in dateutil/tz/_common.py, from 0% -> 100%
 
 <Function 1 name>
 
