@@ -739,6 +739,28 @@ class TzOffsetTest(unittest.TestCase):
 
         assert tz1 is tz2
 
+from dateutil.tz._common import tzrangebase
+
+class MockTZRangeBase(tzrangebase):
+    def __init__(self, dst_offset, std_offset, dst_abbr, std_abbr, transitions):
+        self._dst_offset = dst_offset
+        self._std_offset = std_offset
+        self._dst_abbr = dst_abbr
+        self._std_abbr = std_abbr
+        self._transitions = transitions
+        self.hasdst = True
+
+dst_offset = timedelta(hours=1)
+std_offset = timedelta(hours=0)
+transitions = (datetime(2024, 3, 31, 2, 0, 0), datetime(2024, 10, 27, 2, 0, 0))
+
+def test_dst_none():
+    mock_tz = MockTZRangeBase(dst_offset, std_offset, 'DST', 'STD', transitions)
+    assert mock_tz.dst(None) is None
+
+def test_tzrangebase_init_raises_not_implemented_error():
+    with pytest.raises(NotImplementedError, match='tzrangebase is an abstract base class'):
+        tzrangebase()
 
 @pytest.mark.smoke
 @pytest.mark.tzoffset
