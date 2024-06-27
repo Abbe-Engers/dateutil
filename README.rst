@@ -31,7 +31,6 @@ Programming language: Python
 We use the coverage.py library to measure the branch coverage, using the following command:
 coverage run -m --branch pytest
 
-
 Zakaria Hader
 Function 1: ParserError._str_() in dateutil/parser/_parser.py, from 50% -> 100%
 Function 2: ttinfo.__repr_() in ParserError.__str__, from 0% -> 100%
@@ -48,47 +47,31 @@ Yasar Kocdas
 Function 1: parser._parse() in dateutil/parser/_parser_hms, from 78% -> 100%
 Function 2: rrulebase.__contains__() in dateutil/rrule.py, from 78% -> 100%
 
-
-<Function 1 name>
-
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the instrumented code to gather coverage measurements>
-
-<Provide a screenshot of the coverage results output by the instrumentation>
-
-<Function 2 name>
-
-<Provide the same kind of information provided for Function 1>
-
-## Coverage improvement
-
-### Individual tests
-
-<The following is supposed to be repeated for each group member>
-
-Zakaria Hader
-
-<Group member name>
-
-<Test 1>
-
-<Show a patch (diff) or a link to a commit made in your forked repository that shows the new/enhanced test>
-
-<Provide a screenshot of the old coverage results (the same as you already showed above)>
-
-<Provide a screenshot of the new coverage results>
-
-<State the coverage improvement with a number and elaborate on why the coverage is improved>
-
-<Test 2>
-
-<Provide the same kind of information provided for Test 1>
+PER FUNCTIE NIEUWE SS, before & eind
 
 ### Overall
 
+ZAKA SCREENSHOT
 <Provide a screenshot of the old coverage results by running an existing tool (the same as you already showed above)>
 
 <Provide a screenshot of the new coverage results by running the existing tool using all test modifications made by the group>
 
 ## Statement of individual contributions
 
-<Write what each group member did>
+Abbe and Amine:
+File: dateutil/tz/_common.py
+Methods Covered: tzrangebase._dst_base_offset, tzrangebase.__repr__, tzrangebase.dst, tzrangebase.__init__
+Coverage Achieved: 0% to 100% for _dst_base_offset, __repr__, and __init__; 80% to 100% for dst
+Summary: Abbe and Amine worked together to achieve full coverage these 4 functions in the tzrangebase class.
+
+Zakaria:
+Files and Methods:
+dateutil/parser/_parser.py: ParserError.__str__ (50% to 100%)
+dateutil/tz/tz.py: _ttinfo.__repr__ (0% to 100%)
+Summary: Zakaria enhanced coverage for error handling and representation methods.
+
+Yasar:
+Files and Methods:
+dateutil/parser/_parser_hms: parser._parse (78% to 100%)
+dateutil/rrule.py: rrulebase.__contains__ (75% to 88%)
+Summary: Yasar focused on increasing coverage for parsing and rule-based methods.
